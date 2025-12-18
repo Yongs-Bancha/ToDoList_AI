@@ -1,5 +1,23 @@
+tasks = []
+
+
 def add_task():
-	pass
+	title = input("ป้อนชื่อเรื่อง: ").strip()
+	description = input("ป้อนรายละเอียด: ").strip()
+	due_date = input("ป้อนวันครบกำหนด (YYYY-MM-DD หรือเว้นว่าง): ").strip()
+	if tasks:
+		new_id = max(t.get('id', 0) for t in tasks) + 1
+	else:
+		new_id = 1
+	task = {
+		'id': new_id,
+		'title': title,
+		'description': description,
+		'due_date': due_date,
+		'completed': False,
+	}
+	tasks.append(task)
+	print(f"เพิ่มงานแล้ว (id={new_id})")
 
 
 def view_tasks():
